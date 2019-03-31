@@ -3,7 +3,7 @@
     Houses the knn function itself.
 """
 
-from util import cir, max_value, set_count
+from util import cir, max_value, set_count, id_count
 from Point import Point
 
 def main():
@@ -30,15 +30,15 @@ def knn(k, sets, poi):
     """
     # gets the k nearest points to poi from the points in sets
     distances_to_poi = []
-    for s in sets:
-        for set_p in s:
-            if len(distances_to_poi) < k:
-                distances_to_poi.append(set_p)
-            elif poi.distance_to(set_p) < poi.distance_to(max_value(distances_to_poi, poi)):            
-                distances_to_poi.remove(max_value(distances_to_poi, poi))
-                distances_to_poi.append(set_p)
-            print("Distances:",distances_to_poi)
-    set_id = set_count(distances_to_poi, len(sets))
+    s = [j for i in sets for j in i]
+    for set_p in s:
+        if len(distances_to_poi) < k:
+            distances_to_poi.append(set_p)
+        elif poi.distance_to(set_p) < poi.distance_to(max_value(distances_to_poi, poi)):            
+            distances_to_poi.remove(max_value(distances_to_poi, poi))
+            distances_to_poi.append(set_p)
+        print("Distances:",distances_to_poi)
+    set_id = set_count(distances_to_poi, id_count(s))
     poi.set_id(set_id)
     return set_id
 

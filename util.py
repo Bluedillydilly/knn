@@ -56,3 +56,20 @@ def set_count(distances, id_types):
         set_count[p.id] += 1
     set_id = set_count.index(max(set_count))
     return set_id
+
+def id_count(points):
+    """
+    Counts the number of unique ids in a list of points
+
+    Params:
+        points: the list of points to get the number of unique ids from
+
+    Returns:
+        the number of unique ids in a list of points
+    """
+    count = 0
+    ids = []
+    for p in points:
+        if p.id not in ids:
+            ids += p.id
+    return len(ids)
