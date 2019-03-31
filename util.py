@@ -23,9 +23,7 @@ def cir(cx, cy, radius, training_size, id=-1):
     """
     randxs = [x for x in choices(arange(cx-radius, cx+radius, 0.1), k=training_size) if x >= 0]
     randys = [random.choice(insert(arange(cy-sqrt(radius**2 - (x-cx)**2), cy+sqrt(radius**2 - (x-cx)**2), 0.1), 0, cy)) for x in randxs]
-    points = []
-    for n in range(training_size):
-        points.append(Point([randxs[n], randys[n]], id))
+    points = [Point([randxs[n], randys[n]], id) for n in range(training_size)]
     return points
 
 def max_value(lis, point):
@@ -53,9 +51,7 @@ def set_count(distances, id_types):
         distances: the list to get the frequency of id in
         sets_num: the number of different ids
     """
-    set_count = []
-    for s in range(id_types+1):
-        set_count += [0]
+    set_count = [0 for i in range(id_types+1)]
     for p in distances:
         set_count[p.id] += 1
     set_id = set_count.index(max(set_count))
