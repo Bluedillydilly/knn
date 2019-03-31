@@ -1,5 +1,10 @@
 
 class Point:
+    """
+    A object representing a point.
+    Consisted of coordinates for the point, and
+    id, a identifier for the group it belongs to.
+    """
 
     def __init__(self, coord, id=-1):
         """

@@ -1,3 +1,8 @@
+"""
+    The main file.
+    Houses the knn function itself.
+"""
+
 from util import cir, max_value, set_count
 from Point import Point
 

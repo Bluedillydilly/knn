@@ -1,3 +1,7 @@
+"""
+Utility functions to aid knn
+"""
+
 from random import choices, randint
 from math import sqrt
 from numpy import arange, random, insert
@@ -41,9 +45,16 @@ def max_value(lis, point):
     values = [point.distance_to(p) for p in lis]
     return lis[values.index(max(values))]
 
-def set_count(distances, sets_num):
+def set_count(distances, id_types):
+    """
+    Gets the id that is shared with the most amount of points in distances
+
+    Params:
+        distances: the list to get the frequency of id in
+        sets_num: the number of different ids
+    """
     set_count = []
-    for s in range(sets_num+1):
+    for s in range(id_types+1):
         set_count += [0]
     for p in distances:
         set_count[p.id] += 1
