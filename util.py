@@ -4,11 +4,18 @@ from numpy import arange, random, insert
 from Point import Point
 
 
-def cir(cx, cy, radius, training_size, id=0):
+def cir(cx, cy, radius, training_size, id=-1):
     """
     Returns a list, length training_size, of points with the circle described by the center (cx, cy) with a radius radius.
     
-    (x - cx)**2 + (y-cy)**2 = radius**2
+    (x - cx)**2 + (y-cy)**2 <= radius**2
+
+    Params:
+        cx: the x coordinate of the circle
+        cy: the y coordinate of the circle
+        radius: the radius of the center to find points within
+        training_size: the number of points to create
+        id: the group the points will belong to
     """
     randxs = [x for x in choices(arange(cx-radius, cx+radius, 0.1), k=training_size) if x >= 0]
     randys = [random.choice(insert(arange(cy-sqrt(radius**2 - (x-cx)**2), cy+sqrt(radius**2 - (x-cx)**2), 0.1), 0, cy)) for x in randxs]
@@ -19,7 +26,14 @@ def cir(cx, cy, radius, training_size, id=0):
 
 def max_value(lis, point):
     """
-    Returns the point in lis that is the furthest from poit
+    Returns the point in lis that is the furthest from point
+
+    Params:
+        lis: the list of points
+        point: the point to check distance to
+
+    Returns:
+        the point with the greatest distance to point
     """
     print("\nPoint:",point)
     max_value = 0

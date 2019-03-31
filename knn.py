@@ -11,6 +11,18 @@ def main():
     print("Updated point:",poi)
 
 def knn(k, sets, poi):
+    """
+    Gets the group of points the the point poi should belong to.
+    Uses the k-nearest neighbors to get the group
+
+    Params:
+        k: the number of numbers to check the id of
+        sets: the points to check if poi belongs
+        poi: the point of interest
+
+    Returns:
+        the id of the group poi should belong to
+    """
     # gets the k nearest points to poi from the points in sets
     distances_to_poi = []
     for s in sets:
