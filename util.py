@@ -13,7 +13,7 @@ def cir(cx, cy, radius, training_size, id=-1):
     Returns a list, length training_size, of points with the circle described by the center (cx, cy) with a radius radius.
     
     (x - cx)**2 + (y-cy)**2 <= radius**2
-
+    (NEEDS WORK I DON'T LIKE HOW Xs AND Ys are gen'ed)
     Params:
         cx: the x coordinate of the circle
         cy: the y coordinate of the circle
