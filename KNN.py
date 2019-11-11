@@ -10,14 +10,23 @@ def knn(training, labels, k, predictSet):
             labels -  the labels of the training data
             k - number of neighbos to *knock knock* check
             predictSet - set of points we want to classify
+
+        Output:
+            tuple pair of points to be predicted; predictSet, and the labels for the predictSet.
+             
     """
+    # labels for the predictSet
     predicted = []
     for p in predictSet:
         distances = []
         for i in range(len(training)):
+            # distance of p to each training sample
             distances.append((i,linalg.norm(p-training[i])))
+        # index,distance pairs sorted by distance
         distances.sort(key=lambda pair: pair[1])
+        # labels of the k nearest training samples to p
         distances = [labels[d[0]] for d in distances[:k]]
+        # most common label
         predicted.append(max(distances, key=distances.count))
     return (predictSet, predicted)
 
